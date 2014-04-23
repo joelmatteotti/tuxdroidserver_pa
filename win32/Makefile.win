@@ -1,0 +1,53 @@
+# Project: TuxDroidServer
+# Makefile created by Dev-C++ 5.2.0.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ../src/TuxServer.o ../src/TuxAudio.o ../src/TuxDriver.o ../src/TuxLogger.o ../src/TuxStrings.o ../src/TuxAttitune.o ../src/TuxTime.o ../src/TuxUtils.o ../src/TuxDownloader.o $(RES)
+LINKOBJ  = ../src/TuxServer.o ../src/TuxAudio.o ../src/TuxDriver.o ../src/TuxLogger.o ../src/TuxStrings.o ../src/TuxAttitune.o ../src/TuxTime.o ../src/TuxUtils.o ../src/TuxDownloader.o $(RES)
+LIBS     = -pg -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -L"./lib/" lib/libpthreadGC2.a lib/libcharset.lib lib/libiconv.lib lib/libxml2.lib lib/libfmodex.a lib/libws2_32.a lib/libcurld_imp.lib  
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"  -I"../include"  -I"../include/win32/pthread"  -I"../include/win32/iconv"  -I"../include/win32/" 
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"  -I"../include"  -I"../include/win32/pthread"  -I"../include/win32/iconv"  -I"../include/win32/" 
+BIN      = TuxDroidServer.exe
+CXXFLAGS = $(CXXINCS)   -ansi -pg
+CFLAGS   = $(INCS)   -ansi -pg
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before TuxDroidServer.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "TuxDroidServer.exe" $(LIBS)
+
+../src/TuxServer.o: ../src/TuxServer.c
+	$(CC) -c ../src/TuxServer.c -o ../src/TuxServer.o $(CFLAGS)
+
+../src/TuxAudio.o: ../src/TuxAudio.c
+	$(CC) -c ../src/TuxAudio.c -o ../src/TuxAudio.o $(CFLAGS)
+
+../src/TuxDriver.o: ../src/TuxDriver.c
+	$(CC) -c ../src/TuxDriver.c -o ../src/TuxDriver.o $(CFLAGS)
+
+../src/TuxLogger.o: ../src/TuxLogger.c
+	$(CC) -c ../src/TuxLogger.c -o ../src/TuxLogger.o $(CFLAGS)
+
+../src/TuxStrings.o: ../src/TuxStrings.c
+	$(CC) -c ../src/TuxStrings.c -o ../src/TuxStrings.o $(CFLAGS)
+
+../src/TuxAttitune.o: ../src/TuxAttitune.c
+	$(CC) -c ../src/TuxAttitune.c -o ../src/TuxAttitune.o $(CFLAGS)
+
+../src/TuxTime.o: ../src/TuxTime.c
+	$(CC) -c ../src/TuxTime.c -o ../src/TuxTime.o $(CFLAGS)
+
+../src/TuxUtils.o: ../src/TuxUtils.c
+	$(CC) -c ../src/TuxUtils.c -o ../src/TuxUtils.o $(CFLAGS)
+
+../src/TuxDownloader.o: ../src/TuxDownloader.c
+	$(CC) -c ../src/TuxDownloader.c -o ../src/TuxDownloader.o $(CFLAGS)
